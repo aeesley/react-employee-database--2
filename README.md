@@ -1,4 +1,4 @@
-# PWA BUDGET TRACKER
+# EMPLOYEE BUDGET DATABASE
 
 ## Table of Contents
 * Description
