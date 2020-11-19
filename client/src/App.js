@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from "./components/NavBar/NavBar.js";
+import TableHead from "./components/TableHead/TableHead.js";
 import EmployeeCard from "./components/EmployeeCard.js";
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
@@ -22,8 +23,11 @@ function App() {
 
     var newFilteredEmps = []
 
+  // console.log("state.emp", state.emps);    
     state.emps.map(function(eachEmployee) {
       // If our user input matches the API random user name, then push to the newFilteredEmps array
+      console.log("testing eache mploy", eachEmployee.name.first.substring(0,event.target.value.length).toLowerCase());
+      console.log("event.target", event.target.value);
       if(event.target.value == eachEmployee.name.first.substring(0,event.target.value.length)){
         console.log("we found a match");
         newFilteredEmps.push(eachEmployee);
@@ -46,6 +50,24 @@ function App() {
   
     }, [])
 
+    const sortName = () => {
+      console.log("sortName");
+      const sort = state.emps.sort(function(a, b){
+        var nameA=a.name.first.toLowerCase(), nameB=b.name.first.toLowerCase();
+        if (nameA < nameB) //sort string ascending
+         return -1;
+        if (nameA > nameB)
+         return 1;
+        return 0; //default return value (no sorting)
+       });
+       setState({...state, emps: sort})
+      //  for (let index = 0; index < sort.length; index++) {
+      //   console.log(sort[index].name.first);
+      //  }
+
+    }
+
+
   // Creating variable to store "things to display" so we can change that state based on if there is user input in the search bar
   var thingToDisplay = state.emps
 
@@ -60,6 +82,7 @@ function App() {
       <p>Search for an Employee:
       <input onChange={handleTyping}></input>
       </p>
+      <TableHead sortName = {sortName}/>
       {thingToDisplay.map(function(eachEmployee) {
         return (<EmployeeCard 
           name={eachEmployee.name.first}
