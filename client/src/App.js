@@ -9,9 +9,9 @@ function App() {
   // Defining the state  
   const [state, setState] = useState({
     emps: [
-      {name: 'tom', email: 'tom@gmail.com'},
-      {name: 'alex', email: 'alex@gmail.com'},
-      {name: 'aj', email: 'aj@gmail.com'}
+      // {name: 'tom', email: 'tom@gmail.com'},
+      // {name: 'alex', email: 'alex@gmail.com'},
+      // {name: 'aj', email: 'aj@gmail.com'}
     ],
     filteredEmps: []
   })
@@ -22,11 +22,11 @@ function App() {
 
     var newFilteredEmps = []
 
-    state.emps.map(function(eachSingleThing) {
+    state.emps.map(function(eachEmployee) {
       // If our user input matches the API random user name, then push to the newFilteredEmps array
-      if(event.target.value == eachSingleThing.name.first.substring(0,event.target.value.length)){
+      if(event.target.value == eachEmployee.name.first.substring(0,event.target.value.length)){
         console.log("we found a match");
-        newFilteredEmps.push(eachSingleThing);
+        newFilteredEmps.push(eachEmployee);
       }
     })
     // Change state of filteredEmps array within state to the newFilteredEmps array based on the user input match in the if/else statement above
@@ -35,16 +35,16 @@ function App() {
 
   }
 
-  // Helper function that makes sure the API data is only called once at the beginning of the client session (doesn't keep pulling constantly)
-  useEffect(()=> {
-    // Axios pull to grab 50 users from our random user API database
-    axios.get('https://randomuser.me/api/?results=50').then(function(data){
-      console.log('API DATA!!!!', data.data.results)
-      setState({...state, emps: data.data.results})
-
-    })
-
-  }, [])
+    // Helper function that makes sure the API data is only called once at the beginning of the client session (doesn't keep pulling constantly)
+    useEffect(()=> {
+      // Axios pull to grab 50 users from our random user API database
+      axios.get('https://randomuser.me/api/?results=50').then(function(data){
+        console.log('API DATA!!!!', data.data.results)
+        setState({...state, emps: data.data.results})
+  
+      })
+  
+    }, [])
 
   // Creating variable to store "things to display" so we can change that state based on if there is user input in the search bar
   var thingToDisplay = state.emps
@@ -57,15 +57,14 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <p>
+      <p>Search for an Employee:
       <input onChange={handleTyping}></input>
       </p>
-      <p>Name</p>
-      {thingToDisplay.map(function(eachSingleThing) {
+      {thingToDisplay.map(function(eachEmployee) {
         return (<EmployeeCard 
-          name={eachSingleThing.name.first}
-          email={eachSingleThing.email}
-          cell={eachSingleThing.cell}
+          name={eachEmployee.name.first}
+          email={eachEmployee.email}
+          cell={eachEmployee.cell}
           />)
       })}
     </div>
