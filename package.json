@@ -1,5 +1,5 @@
 {
-  "name": "react-express-heroku",
+  "name": "react-employee-database--2",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -13,7 +13,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "Paul Cwik",
+  "author": "Alex Eesley",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
