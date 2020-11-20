@@ -1,15 +1,11 @@
 import React from "react";
 import './EmployeeCard.css';
 
-
+// Function that displays the employee card
 function EmployeeCard(props) {
-  //console.log('proppsss!!! in the employee! card!!', props)
     return (
       <div className="container card">
         <div className="row">
-          <div className="col-sm employeerow">
-            IMG
-          </div>
           <div className="col-sm">
             {props.name}
           </div>

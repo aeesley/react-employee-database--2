@@ -37,7 +37,7 @@ Search for an employee usign the search input, or sorting alphabetically by name
 [Github](https://github.com/aeesley/react-employee-database--2)
 
 ## Screenshot
-![Homepage](./budget-tracker-homepage.png)
+![Homepage](./homepage.png)
 
 ## Technology
 HTML, CSS, Javacript, React, Node, Express, Axios, Heroku, Github, 

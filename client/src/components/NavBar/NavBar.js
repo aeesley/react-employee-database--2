@@ -1,6 +1,7 @@
 import React from "react";
 import './NavBar.css';
 
+// Function that display nav bar at the top of the page
 function NavBar() {
   return (
 <nav>

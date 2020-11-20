@@ -1,15 +1,11 @@
 import React from "react";
 import './TableHead.css';
 
-
+// Function that displays table header column
 function TableHead(props) {
-  //console.log('proppsss!!! in the employee! card!!', props)
     return (
       <div className="container card">
         <div className="row">
-          <div className="col-sm employeerow">
-            <h3>Image</h3>
-          </div>
           <div className="col-sm">
           <h3 onClick={()=>props.sortName()}>Name</h3>
           </div>
